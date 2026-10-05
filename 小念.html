@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<style>
+  body { background: #f7f3e9; margin:0; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh; font-family: 'Segoe UI', system-ui; user-select:none; }
+  h1 { font-size:2.5rem; color:#4a3728; margin-bottom:0.5rem; }
+  .count { font-size:2.8rem; font-weight:bold; color:#4a3728; }
+  .msg { font-size:1.4rem; color:#7f6b5a; margin:0.5rem 0; }
+  .btn { background:#d2a679; border:none; border-radius:60px; padding:1.2rem 3rem; font-size:2.5rem; color:white; cursor:pointer; box-shadow:0 6px 0 #b58b6a; transition:0.05s; margin:1.5rem 0; }
+  .btn:active { transform:translateY(5px); box-shadow:0 1px 0 #b58b6a; }
+  .reset { background:#d9d0c5; border:none; border-radius:30px; padding:0.5rem 1.5rem; font-size:1rem; color:#4a3728; }
+  .footer { position:fixed; bottom:20px; font-size:0.8rem; color:#b0a090; text-align:center; }
+  .footer a { color:#7a6a5a; text-decoration:none; }
+</style>
+</head>
+<body>
+<h1>🪷 敲木鱼</h1>
+<div class="count" id="countDisplay">功德：0</div>
+<div class="msg" id="msgDisplay">点击敲击</div>
+<button class="btn" id="knockBtn">🔨 敲击</button>
+<button class="reset" id="resetBtn">重置</button>
+<div class="footer">
+  小念专属 · 小念@xiaonianTvT<br>
+  <a href="https://t.me/xiaoniangongyi" target="_blank">公益频道</a>
+</div>
+<script>
+let count=0; const msgs=['功德+1','善哉善哉','阿弥陀佛','福慧双修','身心清净','随喜赞叹'];
+const knock=()=>{ count++; document.getElementById('countDisplay').textContent='功德：'+count; document.getElementById('msgDisplay').textContent=msgs[Math.floor(Math.random()*msgs.length)]; if(navigator.vibrate) navigator.vibrate(50); };
+document.getElementById('knockBtn').addEventListener('click', knock);
+document.getElementById('resetBtn').addEventListener('click', ()=>{ count=0; document.getElementById('countDisplay').textContent='功德：0'; document.getElementById('msgDisplay').textContent='已归零'; });
+document.addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter') knock(); });
+</script>
+</body>
+</html>
